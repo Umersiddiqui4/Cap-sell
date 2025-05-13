@@ -20,7 +20,7 @@ export function useCapCategories() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await fetch('http://localhost:3000/api/cap-category');
+        const res = await fetch('https://cms-coral-beta.vercel.app/api/cap-category');
         const data = await res.json();
         setCategories(data.docs || []);
       } catch (err: any) {
