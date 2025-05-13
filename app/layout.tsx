@@ -3,9 +3,13 @@ import './globals.css'
 import { LayoutWithNavSidebar } from '@/components/layout-with-nav-sidebar'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'Cap-Store',
+  description: 'Cap Store - Your one-stop shop for premium caps',
+  keywords: 'caps, hats, fashion, accessories, premium caps',
   generator: 'v0.dev',
+  icons: {
+    icon: 'https://wallpapers.com/images/hd/one-piece-luffy-straw-hat-smile-cgw4dpquwyu9jhqj-2.png',
+  },
 }
 
 export default function RootLayout({
