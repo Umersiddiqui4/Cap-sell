@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { cn } from "@/lib/utils"
 import { useRouter } from "next/router"
+import { useCapsId } from "@/hooks/useCaps"
 
 export interface CapCategory {
   id: string;
@@ -46,11 +47,22 @@ interface ProductDetailProps {
   // onAddToCart?: (product: Product, quantity: number, selectedColor: string, selectedSize?: string) => void
 }
 
-export default function ProductDetail({ product}: any) {
+export default function ProductDetail({ props}: any) {
+  const { product, loading, error }: any = useCapsId(props.id);
+  
+  if(loading){
+    return <div>Loading...</div>
+  }
+  
+  if(error){
+    return <div>error:{error}</div>
+  }
+
   const [selectedImage, setSelectedImage] = useState(0)
   const [quantity, setQuantity] = useState(1)
   const [selectedColor, setSelectedColor] = useState(product.colors[0]?.name || "")
   const [selectedSize, setSelectedSize] = useState(product.sizes?.[0] || "")
+
 //   const router = useRouter();
 //   const { id } = router.query;
 // console.log("params", id);
