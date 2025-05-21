@@ -18,152 +18,8 @@ export default function CapsShowcasePage() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
   const [isFilterOpen, setIsFilterOpen] = useState(false)
 
-  // Sample categories data
-  // const categories: Category[] = [
-  //   {
-  //     id: "sports",
-  //     name: "Sports Caps",
-  //     description: "Performance caps for athletes and sports enthusiasts",
-  //     image: "https://speedsports.pk/cdn/shop/files/JP0387_1_HARDWARE_Photography_FrontCenterView_white.jpg?v=1741167696&width=600",
-  //   },
-  //   {
-  //     id: "casual",
-  //     name: "Casual Caps",
-  //     description: "Everyday caps for a relaxed, stylish look",
-  //     image: "https://img.drz.lazcdn.com/static/pk/p/a400152e9baf313ccca009cb4badbd0a.jpg_720x720q80.jpg",
-  //   },
-  //   {
-  //     id: "trucker",
-  //     name: "Trucker Caps",
-  //     description: "Classic mesh-backed caps with modern designs",
-  //     image: "https://loveyourbuttco.com/cdn/shop/products/IMG_9925_1080x.jpg?v=1668137354",
-  //   },
-  //   {
-  //     id: "premium",
-  //     name: "Premium Collection",
-  //     description: "Luxury caps crafted with premium materials",
-  //     image: "https://www.capsclubpk.com/cdn/shop/files/DSC01679.jpg?v=1710725041",
-  //   },
-  // ]
-
-
   const { categories, loading, error } = useCapCategories();
 
-
-
-  // Sample products data
-  // const allProducts: Product[] = [
-  //   {
-  //     id: "quantum-pro-sports",
-  //     name: "Quantum Pro Sports Cap",
-  //     price: 59.99,
-  //     colors: [
-  //       { name: "Black", value: "#000000" },
-  //       { name: "Blue", value: "#0ea5e9" },
-  //       { name: "Red", value: "#dc2626" },
-  //     ],
-  //     material: "Performance Polyester",
-  //     images: ["https://justinehats.com/wp-content/uploads/2021/01/mens-best-jeans-cap-2.jpg"],
-  //     category: "sports",
-  //     inStock: true,
-  //   },
-  //   {
-  //     id: "velocity-sports",
-  //     name: "Velocity Training Cap",
-  //     price: 49.99,
-  //     colors: [
-  //       { name: "Gray", value: "#6b7280" },
-  //       { name: "Green", value: "#10b981" },
-  //     ],
-  //     material: "Moisture-Wicking Fabric",
-  //     images: ["https://i.ebayimg.com/images/g/ydAAAOSwuBhj9vZl/s-l400.jpg"],
-  //     category: "sports",
-  //     inStock: true,
-  //   },
-  //   {
-  //     id: "urban-casual",
-  //     name: "Urban Street Cap",
-  //     price: 39.99,
-  //     colors: [
-  //       { name: "Black", value: "#000000" },
-  //       { name: "White", value: "#ffffff" },
-  //       { name: "Beige", value: "#d4c4a8" },
-  //     ],
-  //     material: "Cotton Blend",
-  //     images: ["https://img.joomcdn.net/2d219550180d0a2b78091554428ade9c00d6ab36_original.jpeg"],
-  //     category: "casual",
-  //     inStock: true,
-  //   },
-  //   {
-  //     id: "daily-casual",
-  //     name: "Daily Comfort Cap",
-  //     price: 34.99,
-  //     colors: [
-  //       { name: "Navy", value: "#1e3a8a" },
-  //       { name: "Maroon", value: "#9f1239" },
-  //     ],
-  //     material: "Soft Cotton",
-  //     images: ["https://pictures-kenya.jijistatic.com/46474346_NjIwLTYyMC1hNjljM2NhMTk3LTE.webp"],
-  //     category: "casual",
-  //     inStock: true,
-  //   },
-  //   {
-  //     id: "mountain-trucker",
-  //     name: "Mountain Explorer Trucker",
-  //     price: 44.99,
-  //     colors: [
-  //       { name: "Green", value: "#10b981" },
-  //       { name: "Brown", value: "#92400e" },
-  //     ],
-  //     material: "Mesh and Canvas",
-  //     images: ["https://img.lazcdn.com/g/p/eb9d7382b9e2d44d046a644acfebf6b6.jpg_720x720q80.jpg"],
-  //     category: "trucker",
-  //     inStock: true,
-  //   },
-  //   {
-  //     id: "retro-trucker",
-  //     name: "Retro Patch Trucker",
-  //     price: 42.99,
-  //     colors: [
-  //       { name: "Blue", value: "#0ea5e9" },
-  //       { name: "Orange", value: "#f97316" },
-  //     ],
-  //     material: "Mesh and Cotton",
-  //     images: ["https://i.pinimg.com/originals/a9/32/2b/a9322b16e50af6dc1b86ae15fb89ff2c.jpg"],
-  //     category: "trucker",
-  //     inStock: true,
-  //   },
-  //   {
-  //     id: "luxury-premium",
-  //     name: "Luxury Leather Accent Cap",
-  //     price: 89.99,
-  //     originalPrice: 109.99,
-  //     colors: [
-  //       { name: "Black", value: "#000000" },
-  //       { name: "Brown", value: "#92400e" },
-  //     ],
-  //     material: "Premium Wool Blend with Leather Accents",
-  //     images: ["https://images.meesho.com/images/products/428151072/zshsi_512.webp"],
-  //     category: "premium",
-  //     inStock: true,
-  //     featured: true,
-  //   },
-  //   {
-  //     id: "signature-premium",
-  //     name: "Signature Edition Cap",
-  //     price: 79.99,
-  //     colors: [
-  //       { name: "Black", value: "#000000" },
-  //       { name: "Navy", value: "#1e3a8a" },
-  //     ],
-  //     material: "Premium Cotton with Satin Lining",
-  //     images: ["https://justinehats.com/wp-content/uploads/2021/01/mens-best-jeans-cap-2.jpg"], // Reused
-  //     category: "premium",
-  //     inStock: true,
-  //     new: true,
-  //   },
-  // ];
-  
   console.log("Categories:", categories)
   const { caps } = useCaps();
 const allProducts: any = caps || [];
@@ -441,7 +297,7 @@ export function CategoryCard({ category }: CategoryProps) {
     >
       <div className="aspect-square relative">
         <Image
-          src={category.image ? category.image : category.imageUrl}
+          src={category.image.url }
           alt={category.name}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"

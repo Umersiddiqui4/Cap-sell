@@ -54,6 +54,8 @@ export default function ProductDetail({ product}: any) {
 //   const router = useRouter();
 //   const { id } = router.query;
 // console.log("params", id);
+console.log(product,"product");
+
 
   const handleAddToCart = () => {
     // if (onAddToCart) {
@@ -143,16 +145,16 @@ export default function ProductDetail({ product}: any) {
               <div className="flex flex-wrap gap-2">
                 {product.colors.map((color: any) => (
                   <button
-                    key={color.name}
+                    key={color.value}
                     className={cn(
                       "w-8 h-8 rounded-full flex items-center justify-center border-2",
                       selectedColor === color.name ? "border-purple-500" : "border-zinc-800",
                     )}
-                    onClick={() => setSelectedColor(color.name)}
-                    title={color.name}
+                    onClick={() => setSelectedColor(color.value)}
+                    title={color.value}
                   >
                     <span className="w-6 h-6 rounded-full" style={{ backgroundColor: color.value }} />
-                    {selectedColor === color.name && <Check className="absolute h-3 w-3 text-white" />}
+                    {selectedColor === color.value && <Check className="absolute h-3 w-3 text-white" />}
                   </button>
                 ))}
               </div>

@@ -8,6 +8,8 @@ export interface CategoryProps {
 }
 
 export function CategoryCard({ category }: CategoryProps) {
+  console.log(category,"catlist");
+  
   return (
     <Link
       href={`/caps`}
@@ -15,7 +17,7 @@ export function CategoryCard({ category }: CategoryProps) {
     >
       <div className="aspect-square relative">
         <Image
-          src={category.image ? category.image : category.imageUrl}
+          src={category.image.url }
           alt={category.name}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
