@@ -24,7 +24,7 @@ export function useCaps() {
   useEffect(() => {
     const fetchCaps = async () => {
       try {
-        const res = await fetch('https://cms-coral-beta.vercel.app/api/caps');  // Adjust the API endpoint for caps
+        const res = await fetch('https://cms-coral-beta.vercel.app/api/caps?depth=true');  // Adjust the API endpoint for caps
         const data = await res.json();
         setCaps(data.docs || []);
       } catch (err: any) {

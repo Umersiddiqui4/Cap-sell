@@ -8,7 +8,6 @@ import { Badge } from "@/components/ui/badge"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { cn } from "@/lib/utils"
 import { useRouter } from "next/router"
-import { useCapsId } from "@/hooks/useCaps"
 
 export interface CapCategory {
   id: string;
@@ -33,7 +32,7 @@ export interface Product {
   }>;
   sizes?: string[];
   material: string;
-  images: Array<{ id: string; url: string }>;
+  images: Array<{ id: string; media: {url: string}  }>;
   features?: string[];
   inStock?: boolean;
   featured?: boolean;
@@ -47,17 +46,7 @@ interface ProductDetailProps {
   // onAddToCart?: (product: Product, quantity: number, selectedColor: string, selectedSize?: string) => void
 }
 
-export default function ProductDetail({ props}: any) {
-  const { product, loading, error }: any = useCapsId(props.id);
-  
-  if(loading){
-    return <div>Loading...</div>
-  }
-  
-  if(error){
-    return <div>error:{error}</div>
-  }
-
+export default function ProductDetail({ product}: any) {
   const [selectedImage, setSelectedImage] = useState(0)
   const [quantity, setQuantity] = useState(1)
   const [selectedColor, setSelectedColor] = useState(product.colors[0]?.name || "")
@@ -86,7 +75,7 @@ console.log(product,"product");
         <div className="p-6">
           <div className="relative aspect-square rounded-lg overflow-hidden mb-4 bg-zinc-900">
             <Image
-              src={product.images[selectedImage].url|| "/placeholder.svg?height=600&width=600"}
+              src={product.images[selectedImage].media.url|| "/placeholder.svg?height=600&width=600"}
               alt={product.name}
               fill
               className="object-cover"
@@ -112,7 +101,7 @@ console.log(product,"product");
                   onClick={() => setSelectedImage(index)}
                 >
                   <Image
-                    src={image.url || "/placeholder.svg?height=100&width=100"}
+                    src={image.media.url || "/placeholder.svg?height=100&width=100"}
                     alt={`${product.name} - view ${index + 1}`}
                     fill
                     className="object-cover"

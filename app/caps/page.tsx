@@ -229,7 +229,7 @@ function ProductCard({
       {/* Product image */}
       <div className="aspect-square relative overflow-hidden">
         <Image
-          src={product.images[0].url || "/placeholder.svg"}
+          src={product.images[0].media.url || "/placeholder.svg"}
           alt={product.name}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-110"
